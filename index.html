@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>With All Love — Nabin 🌷</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Pinyon+Script&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--tulip:#e8405a;--gold:#f0c97a;--cream:#fff5f7;}
+html,body{min-height:100%;overflow-x:hidden;}
+body{
+  background:radial-gradient(ellipse at 50% 0%,#1e0014 0%,#0a0006 70%);
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-start;
+  padding:18px 14px 40px;font-family:'Raleway',sans-serif;
+}
+.fpetal{position:fixed;top:-40px;pointer-events:none;z-index:0;opacity:0;animation:fall linear infinite;filter:drop-shadow(0 2px 6px rgba(232,64,90,0.6));}
+@keyframes fall{0%{opacity:0;transform:translateY(0) rotate(0deg);}6%{opacity:.9;}92%{opacity:.5;}100%{opacity:0;transform:translateY(108vh) rotate(400deg);}}
+
+/* CARD */
+.card{
+  position:relative;z-index:2;width:100%;max-width:390px;
+  background:linear-gradient(165deg,#1e0016 0%,#110008 55%,#1c000f 100%);
+  border-radius:24px;overflow:hidden;
+  box-shadow:0 0 0 1.5px rgba(240,201,122,0.28),0 0 0 5px rgba(232,64,90,0.07),0 28px 90px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.card-inner-border{position:absolute;inset:9px;border-radius:17px;border:1px solid rgba(240,201,122,0.12);pointer-events:none;z-index:10;}
+
+/* BEATING HEARTS */
+.co{position:absolute;font-size:1.25rem;z-index:11;pointer-events:none;line-height:1;animation:hbeat var(--spd,1.3s) ease-in-out infinite;filter:drop-shadow(0 0 8px rgba(232,64,90,0.9));}
+.co-tl{top:13px;left:16px;--spd:1.2s;} .co-tr{top:13px;right:16px;--spd:1.45s;}
+.co-bl{bottom:13px;left:16px;--spd:1.35s;} .co-br{bottom:13px;right:16px;--spd:1.1s;}
+@keyframes hbeat{0%,100%{transform:scale(1);}14%{transform:scale(1.5);}28%{transform:scale(1);}42%{transform:scale(1.28);}56%{transform:scale(1);}}
+
+/* TULIP */
+.tulip-banner{width:100%;height:200px;position:relative;overflow:hidden;background:linear-gradient(180deg,#0a0006 0%,#140008 100%);border-bottom:1px solid rgba(240,201,122,0.1);}
+.tulip-banner svg{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;height:100%;}
+
+/* HEADER */
+.header{text-align:center;padding:18px 22px 6px;position:relative;z-index:1;}
+.hrt{display:block;font-size:1.8rem;animation:hbeat 1.4s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(232,64,90,0.8));margin-bottom:5px;}
+.t-main{font-family:'Pinyon Script',cursive;font-size:2.4rem;color:var(--gold);text-shadow:0 0 36px rgba(240,201,122,0.65);line-height:1;}
+.t-sub{font-size:.6rem;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,120,155,0.65);margin-top:5px;}
+
+/* DIVIDER */
+.dvd{display:flex;align-items:center;gap:8px;margin:12px 22px;opacity:.45;}
+.dvd::before,.dvd::after{content:'';flex:1;height:1px;}
+.dvd::before{background:linear-gradient(to right,transparent,var(--gold));}
+.dvd::after{background:linear-gradient(to left,transparent,var(--gold));}
+.dvd span{color:var(--gold);font-size:.9rem;}
+
+/* STAGE */
+.stage{margin:0 16px 14px;min-height:120px;background:rgba(0,0,0,0.38);border-radius:16px;border:1px solid rgba(232,64,90,0.18);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 16px;position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s;}
+.stage::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(232,64,90,0.14) 0%,transparent 65%);pointer-events:none;}
+.stage.lit{border-color:rgba(232,64,90,0.5);box-shadow:0 0 30px rgba(232,64,90,0.1) inset;}
+.l-hindi{font-size:.75rem;color:rgba(255,180,200,0.5);font-style:italic;margin-bottom:10px;letter-spacing:.5px;text-align:center;min-height:16px;transition:opacity .35s;}
+.l-eng{font-family:'Dancing Script',cursive;font-size:1.45rem;font-weight:600;color:var(--cream);text-align:center;line-height:1.5;min-height:44px;text-shadow:0 0 24px rgba(240,201,122,0.28);position:relative;z-index:1;}
+.l-eng.pop{animation:lpop .45s cubic-bezier(.22,1,.36,1) forwards;}
+@keyframes lpop{0%{opacity:0;transform:translateY(8px) scale(.97);}100%{opacity:1;transform:translateY(0) scale(1);}}
+
+.instr{text-align:center;font-size:.63rem;letter-spacing:1px;color:rgba(255,180,200,0.5);margin:0 16px 10px;line-height:1.7;font-style:italic;}
+
+/* BUTTONS */
+.lyric-controls{display:flex;align-items:center;justify-content:center;gap:10px;margin:0 16px 8px;}
+.play-btn{flex:1;background:linear-gradient(135deg,var(--tulip),#a01830);border:none;border-radius:10px;cursor:pointer;color:#fff;font-size:.72rem;letter-spacing:1.8px;text-transform:uppercase;padding:12px 10px;box-shadow:0 0 22px rgba(232,64,90,0.5);animation:pglow 2s infinite;font-family:'Raleway',sans-serif;font-weight:400;transition:transform .15s;}
+.play-btn:active{transform:scale(.96);}
+.play-btn.playing{background:linear-gradient(135deg,#a01830,var(--tulip));}
+@keyframes pglow{0%,100%{box-shadow:0 0 22px rgba(232,64,90,0.5);}50%{box-shadow:0 0 38px rgba(232,64,90,0.8);}}
+
+.cal-btn{background:rgba(240,201,122,0.08);border:1px solid rgba(240,201,122,0.25);border-radius:10px;cursor:pointer;color:rgba(240,201,122,0.7);font-size:.62rem;letter-spacing:1px;padding:12px 11px;font-family:'Raleway',sans-serif;transition:all .2s;white-space:nowrap;}
+.cal-btn:hover{background:rgba(240,201,122,0.14);color:var(--gold);}
+.cal-btn.active{background:linear-gradient(135deg,rgba(240,201,122,0.2),rgba(232,64,90,0.2));border-color:var(--gold);color:var(--gold);animation:pglow 1s infinite;}
+
+/* CALIBRATION OVERLAY */
+.cal-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.95);flex-direction:column;align-items:center;justify-content:center;padding:24px;}
+.cal-overlay.show{display:flex;}
+.cal-box{width:100%;max-width:340px;background:linear-gradient(165deg,#1e0016,#110008);border:1px solid rgba(240,201,122,0.22);border-radius:20px;padding:26px 20px;text-align:center;}
+.cal-title{font-family:'Pinyon Script',cursive;font-size:2rem;color:var(--gold);margin-bottom:4px;}
+.cal-desc{font-size:.63rem;letter-spacing:.7px;color:rgba(255,180,200,0.55);margin-bottom:20px;line-height:1.8;}
+.cal-next-line{font-family:'Dancing Script',cursive;font-size:1.35rem;color:var(--cream);margin-bottom:5px;min-height:38px;text-shadow:0 0 18px rgba(240,201,122,0.3);transition:all .3s;}
+.cal-hindi-line{font-size:.72rem;color:rgba(255,180,200,0.45);font-style:italic;margin-bottom:20px;min-height:16px;}
+.cal-progress-text{font-size:.58rem;color:rgba(255,255,255,.22);letter-spacing:1px;margin-bottom:14px;}
+.cal-tap-btn{width:100%;padding:15px;border:none;border-radius:12px;cursor:pointer;background:linear-gradient(135deg,var(--tulip),#a01830);color:#fff;font-size:.82rem;letter-spacing:2px;text-transform:uppercase;font-family:'Raleway',sans-serif;box-shadow:0 0 24px rgba(232,64,90,0.5);animation:pglow 1.5s infinite;transition:transform .1s;margin-bottom:12px;}
+.cal-tap-btn:active{transform:scale(.96);}
+.cal-flash{background:linear-gradient(135deg,#fff,#ffb0c8) !important;color:#a01830 !important;}
+.cal-done-btn{width:100%;padding:10px;border:1px solid rgba(240,201,122,0.25);border-radius:10px;background:transparent;cursor:pointer;color:rgba(240,201,122,0.6);font-size:.62rem;letter-spacing:1px;font-family:'Raleway',sans-serif;transition:all .2s;}
+.cal-done-btn:hover{background:rgba(240,201,122,0.08);color:var(--gold);}
+
+/* OFFSET BADGE */
+.offset-badge{display:none;text-align:center;font-size:.58rem;color:rgba(255,180,200,0.35);letter-spacing:.8px;margin:0 16px 4px;}
+.offset-badge.show{display:block;}
+
+/* PROGRESS */
+.prog-wrap{margin:2px 16px 6px;}
+.prog-track{height:3px;background:rgba(255,255,255,0.07);border-radius:99px;cursor:pointer;}
+.prog-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--tulip),var(--gold));border-radius:99px;box-shadow:0 0 8px rgba(232,64,90,0.55);transition:width .25s linear;pointer-events:none;}
+.time-row{display:flex;justify-content:space-between;font-size:.58rem;color:rgba(255,255,255,.22);margin-top:5px;letter-spacing:.5px;}
+
+/* SIGNATURE */
+.sig{text-align:center;margin:8px 0 6px;padding:0 16px;}
+.sig-name{font-family:'Pinyon Script',cursive;font-size:1.8rem;color:rgba(240,201,122,0.85);text-shadow:0 0 22px rgba(240,201,122,0.35);line-height:1;}
+
+/* HEART BURST */
+.hburst{position:fixed;pointer-events:none;z-index:999;font-size:1.4rem;animation:bup 1.6s ease-out forwards;}
+@keyframes bup{0%{opacity:1;transform:translateY(0) scale(1);}100%{opacity:0;transform:translateY(-90px) scale(.1) rotate(35deg);}}
+</style>
+</head>
+<body>
+
+<div id="petals-container" style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;"></div>
+<audio id="audio" src="sanu.mp3" preload="auto"></audio>
+
+<!-- ══ CALIBRATION OVERLAY ══ -->
+<div class="cal-overlay" id="calOverlay">
+  <div class="cal-box">
+    <div class="cal-title">Sync Magic 🌷</div>
+    <div class="cal-desc">
+      Music is playing from the start.<br>
+      When you <b style="color:var(--gold)">hear</b> each line — tap the button.<br>
+      One-time fix. Saves forever. 💕
+    </div>
+    <div class="cal-next-line" id="calNextEng">ready…</div>
+    <div class="cal-hindi-line" id="calNextHindi">♪</div>
+    <div class="cal-progress-text" id="calProgressText">waiting…</div>
+    <button class="cal-tap-btn" id="calTapBtn">👆 TAP WHEN YOU HEAR THIS</button>
+    <button class="cal-done-btn" id="calDoneBtn">✓ Done — save & close</button>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-inner-border"></div>
+  <span class="co co-tl">❤️</span><span class="co co-tr">❤️</span>
+  <span class="co co-bl">❤️</span><span class="co co-br">❤️</span>
+
+  <div class="tulip-banner">
+    <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="rp1" cx="50%" cy="75%" r="70%"><stop offset="0%" stop-color="#ffaac4"/><stop offset="55%" stop-color="#e03060"/><stop offset="100%" stop-color="#8a1030"/></radialGradient>
+        <radialGradient id="rp2" cx="35%" cy="70%" r="70%"><stop offset="0%" stop-color="#ffbdd0"/><stop offset="55%" stop-color="#d02858"/><stop offset="100%" stop-color="#7a0828"/></radialGradient>
+        <radialGradient id="rp3" cx="65%" cy="70%" r="70%"><stop offset="0%" stop-color="#ff90aa"/><stop offset="50%" stop-color="#c01e48"/><stop offset="100%" stop-color="#700818"/></radialGradient>
+        <radialGradient id="rpinner" cx="50%" cy="60%" r="60%"><stop offset="0%" stop-color="#ff6080"/><stop offset="100%" stop-color="#8a0020"/></radialGradient>
+        <linearGradient id="stem" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#256030"/><stop offset="100%" stop-color="#50a060"/></linearGradient>
+        <radialGradient id="stamG" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff8a0"/><stop offset="60%" stop-color="#e8c060"/><stop offset="100%" stop-color="#a06020"/></radialGradient>
+        <radialGradient id="bgGlow" cx="50%" cy="85%" r="60%"><stop offset="0%" stop-color="#e8405a" stop-opacity=".28"/><stop offset="100%" stop-color="#0a0006" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="400" height="200" fill="url(#bgGlow)"/>
+      <g opacity=".8">
+        <circle cx="38" cy="18" r="1.2" fill="#f0c97a"><animate attributeName="opacity" values=".7;1;.7" dur="2s" repeatCount="indefinite"/></circle>
+        <circle cx="95" cy="9" r=".9" fill="#fff"><animate attributeName="opacity" values=".5;1;.5" dur="1.7s" repeatCount="indefinite"/></circle>
+        <circle cx="200" cy="13" r="1.1" fill="#f0c97a"><animate attributeName="opacity" values=".6;1;.6" dur="2.3s" repeatCount="indefinite"/></circle>
+        <circle cx="305" cy="9" r=".8" fill="#fff"><animate attributeName="opacity" values=".4;.9;.4" dur="1.9s" repeatCount="indefinite"/></circle>
+        <circle cx="362" cy="22" r="1" fill="#f0c97a"><animate attributeName="opacity" values=".6;1;.6" dur="2.6s" repeatCount="indefinite"/></circle>
+        <circle cx="155" cy="36" r=".7" fill="#ffb0c8"><animate attributeName="opacity" values=".5;1;.5" dur="3s" repeatCount="indefinite"/></circle>
+        <circle cx="248" cy="42" r=".8" fill="#ffb0c8"><animate attributeName="opacity" values=".4;.8;.4" dur="2.2s" repeatCount="indefinite"/></circle>
+      </g>
+      <!-- LEFT TULIP -->
+      <g transform="translate(90,202)"><animateTransform attributeName="transform" type="translate" values="90,202;90,200;90,202" dur="4s" repeatCount="indefinite"/>
+        <path d="M0,0 C-2,-22 2,-52 0,-88" stroke="url(#stem)" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+        <path d="M-1,-36 C-24,-48 -36,-35 -26,-25 C-18,-17 -4,-28 -1,-36Z" fill="#338840" opacity=".9"/>
+        <path d="M1,-50 C22,-62 34,-49 24,-39 C16,-31 3,-42 1,-50Z" fill="#50a060" opacity=".85"/>
+        <path d="M0,-88 C-8,-95 -28,-100 -38,-115 C-44,-125 -38,-138 -28,-132 C-18,-126 -8,-108 0,-88Z" fill="url(#rp3)" opacity=".82"/>
+        <path d="M0,-88 C8,-95 28,-100 38,-115 C44,-125 38,-138 28,-132 C18,-126 8,-108 0,-88Z" fill="url(#rp3)" opacity=".82"/>
+        <path d="M0,-88 C-5,-97 -20,-106 -24,-122 C-26,-132 -18,-142 -10,-136 C-4,-130 0,-110 0,-88Z" fill="url(#rp2)" opacity=".92"/>
+        <path d="M0,-88 C5,-97 20,-106 24,-122 C26,-132 18,-142 10,-136 C4,-130 0,-110 0,-88Z" fill="url(#rp1)" opacity=".92"/>
+        <path d="M0,-90 C-3,-102 -10,-118 -8,-133 C-6,-142 2,-144 4,-136 C6,-124 2,-106 0,-90Z" fill="url(#rp1)" opacity=".97"/>
+        <path d="M0,-90 C3,-102 10,-118 8,-133 C6,-142 -2,-144 -4,-136 C-6,-124 -2,-106 0,-90Z" fill="url(#rp2)" opacity=".97"/>
+        <path d="M-20,-88 Q0,-80 20,-88 Q14,-104 0,-106 Q-14,-104 -20,-88Z" fill="url(#rpinner)" opacity=".75"/>
+        <line x1="-5" y1="-105" x2="-7" y2="-128" stroke="#f0c97a" stroke-width="1.2" opacity=".95"/>
+        <line x1="0" y1="-104" x2="0" y2="-131" stroke="#f0c97a" stroke-width="1.2" opacity=".95"/>
+        <line x1="5" y1="-105" x2="7" y2="-128" stroke="#f0c97a" stroke-width="1.2" opacity=".95"/>
+        <circle cx="-7" cy="-129" r="2.4" fill="url(#stamG)"/><circle cx="0" cy="-132" r="2.4" fill="url(#stamG)"/><circle cx="7" cy="-129" r="2.4" fill="url(#stamG)"/>
+      </g>
+      <!-- CENTER TULIP -->
+      <g transform="translate(200,202)"><animateTransform attributeName="transform" type="translate" values="200,202;200,199;200,202" dur="5s" repeatCount="indefinite"/>
+        <path d="M0,0 C-3,-30 3,-68 0,-112" stroke="url(#stem)" stroke-width="3.8" fill="none" stroke-linecap="round"/>
+        <path d="M-1,-50 C-28,-63 -42,-48 -30,-37 C-22,-28 -5,-40 -1,-50Z" fill="#338840"/>
+        <path d="M1,-68 C26,-81 40,-66 30,-55 C22,-46 4,-58 1,-68Z" fill="#50a060" opacity=".9"/>
+        <path d="M0,-112 C-10,-120 -34,-126 -48,-143 C-56,-155 -48,-170 -36,-163 C-24,-156 -10,-135 0,-112Z" fill="url(#rp3)" opacity=".82"/>
+        <path d="M0,-112 C10,-120 34,-126 48,-143 C56,-155 48,-170 36,-163 C24,-156 10,-135 0,-112Z" fill="url(#rp3)" opacity=".82"/>
+        <path d="M0,-112 C-6,-122 -24,-134 -30,-153 C-32,-165 -22,-176 -12,-169 C-5,-163 0,-140 0,-112Z" fill="url(#rp2)" opacity=".92"/>
+        <path d="M0,-112 C6,-122 24,-134 30,-153 C32,-165 22,-176 12,-169 C5,-163 0,-140 0,-112Z" fill="url(#rp1)" opacity=".92"/>
+        <path d="M0,-114 C-4,-128 -12,-148 -10,-166 C-8,-177 2,-180 5,-171 C8,-158 3,-134 0,-114Z" fill="url(#rp1)" opacity=".97"/>
+        <path d="M0,-114 C4,-128 12,-148 10,-166 C8,-177 -2,-180 -5,-171 C-8,-158 -3,-134 0,-114Z" fill="url(#rp2)" opacity=".97"/>
+        <path d="M-26,-112 Q0,-102 26,-112 Q20,-133 0,-135 Q-20,-133 -26,-112Z" fill="url(#rpinner)" opacity=".78"/>
+        <line x1="-7" y1="-132" x2="-10" y2="-158" stroke="#f0c97a" stroke-width="1.4" opacity=".95"/>
+        <line x1="0" y1="-130" x2="0" y2="-162" stroke="#f0c97a" stroke-width="1.4" opacity=".95"/>
+        <line x1="7" y1="-132" x2="10" y2="-158" stroke="#f0c97a" stroke-width="1.4" opacity=".95"/>
+        <circle cx="-10" cy="-159" r="3" fill="url(#stamG)"/><circle cx="0" cy="-163" r="3" fill="url(#stamG)"/><circle cx="10" cy="-159" r="3" fill="url(#stamG)"/>
+      </g>
+      <!-- RIGHT TULIP -->
+      <g transform="translate(310,202)"><animateTransform attributeName="transform" type="translate" values="310,202;310,200;310,202" dur="4.5s" repeatCount="indefinite"/>
+        <path d="M0,0 C2,-20 -2,-48 0,-82" stroke="url(#stem)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M1,-34 C24,-46 36,-33 26,-23 C18,-15 4,-26 1,-34Z" fill="#338840" opacity=".9"/>
+        <path d="M-1,-48 C-22,-60 -32,-47 -24,-37 C-16,-29 -3,-40 -1,-48Z" fill="#50a060" opacity=".85"/>
+        <path d="M0,-82 C-8,-89 -26,-94 -36,-109 C-42,-119 -36,-132 -26,-126 C-17,-120 -7,-102 0,-82Z" fill="url(#rp3)" opacity=".82"/>
+        <path d="M0,-82 C8,-89 26,-94 36,-109 C42,-119 36,-132 26,-126 C17,-120 7,-102 0,-82Z" fill="url(#rp3)" opacity=".82"/>
+        <path d="M0,-82 C-5,-91 -18,-100 -22,-115 C-24,-125 -16,-135 -8,-129 C-3,-123 0,-103 0,-82Z" fill="url(#rp2)" opacity=".92"/>
+        <path d="M0,-82 C5,-91 18,-100 22,-115 C24,-125 16,-135 8,-129 C3,-123 0,-103 0,-82Z" fill="url(#rp1)" opacity=".92"/>
+        <path d="M0,-84 C-3,-96 -9,-111 -7,-125 C-5,-134 2,-136 4,-128 C5,-116 2,-99 0,-84Z" fill="url(#rp1)" opacity=".97"/>
+        <path d="M0,-84 C3,-96 9,-111 7,-125 C5,-134 -2,-136 -4,-128 C-5,-116 -2,-99 0,-84Z" fill="url(#rp2)" opacity=".97"/>
+        <path d="M-18,-82 Q0,-74 18,-82 Q12,-97 0,-99 Q-12,-97 -18,-82Z" fill="url(#rpinner)" opacity=".75"/>
+        <line x1="-5" y1="-98" x2="-7" y2="-120" stroke="#f0c97a" stroke-width="1.1" opacity=".95"/>
+        <line x1="0" y1="-97" x2="0" y2="-123" stroke="#f0c97a" stroke-width="1.1" opacity=".95"/>
+        <line x1="5" y1="-98" x2="7" y2="-120" stroke="#f0c97a" stroke-width="1.1" opacity=".95"/>
+        <circle cx="-7" cy="-121" r="2.2" fill="url(#stamG)"/><circle cx="0" cy="-124" r="2.2" fill="url(#stamG)"/><circle cx="7" cy="-121" r="2.2" fill="url(#stamG)"/>
+      </g>
+      <path d="M0,200 Q8,174 4,158 Q7,174 18,200Z" fill="#2a5e30" opacity=".5"/>
+      <path d="M28,200 Q34,177 30,163 Q33,178 44,200Z" fill="#2a5e30" opacity=".4"/>
+      <path d="M352,200 Q358,174 354,160 Q357,176 368,200Z" fill="#2a5e30" opacity=".45"/>
+      <path d="M372,200 Q376,178 373,166 Q376,180 384,200Z" fill="#2a5e30" opacity=".35"/>
+      <defs><linearGradient id="gfade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#110008" stop-opacity="0"/><stop offset="100%" stop-color="#110008" stop-opacity="1"/></linearGradient></defs>
+      <rect x="0" y="158" width="400" height="42" fill="url(#gfade)"/>
+    </svg>
+  </div>
+
+  <div class="header">
+    <span class="hrt">💕</span>
+    <div class="t-main">Sanu Ek Pal</div>
+    <div class="t-sub">chain na aave · for my love</div>
+  </div>
+
+  <div class="dvd"><span>🌷</span></div>
+
+  <div class="stage" id="stage">
+    <div class="l-hindi" id="lHindi">♪</div>
+    <div class="l-eng" id="lEng">love you so much sanu 🌷</div>
+  </div>
+
+  <p class="instr">love you so much sanu 🌷</p>
+
+  <div class="lyric-controls">
+    <button class="play-btn" id="playBtn">▶ Play</button>
+    <button class="cal-btn" id="calBtn">⚙ Fix Sync</button>
+  </div>
+
+  <div class="offset-badge" id="offsetBadge">synced ✓</div>
+
+  <div class="prog-wrap">
+    <div class="prog-track" id="pTrack">
+      <div class="prog-fill" id="pFill"></div>
+    </div>
+    <div class="time-row">
+      <span id="tCur">0:00</span>
+      <span id="tDur">0:00</span>
+    </div>
+  </div>
+
+  <div class="dvd" style="margin:8px 22px 6px;"><span>🌷</span></div>
+  <div class="sig"><div class="sig-name">with all love — Nabin 🌷</div></div>
+</div>
+
+<script>
+/* ══ LYRICS — base timestamps ══ */
+const LYRICS = [
+  {t:0,   h:"♪",                                        e:"love you so much sanu 🌷"},
+  {t:6,   h:"सानु इक सानु इक सानु इक",                 e:"Sanu ik… sanu ik…"},
+  {t:13,  h:"सानु इक पल चैन ना आवे",                    e:"Not a single moment of peace comes to me"},
+  {t:19,  h:"सजना तेरे बिना",                            e:"Without you, my love"},
+  {t:24,  h:"सानु इक पल चैन ना आवे",                    e:"Not a single moment of peace…"},
+  {t:30,  h:"सजना तेरे बिना",                            e:"Without you, my darling"},
+  {t:35,  h:"दिल जाने क्यूँ घबरावे",                    e:"My heart trembles — I don't even know why"},
+  {t:41,  h:"दिल जाने क्यूँ घबरावे",                    e:"Something inside keeps shaking for you"},
+  {t:47,  h:"सजना तेरे बिना",                            e:"Without you, my love"},
+  {t:52,  h:"सजना तेरे बिना",                            e:"Without you…"},
+  {t:57,  h:"सानु इक पल चैन ना आवे",                    e:"Not a single moment of peace comes to me"},
+  {t:63,  h:"सानु इक पल चैन ना आवे",                    e:"Not one moment of calm…"},
+  {t:68,  h:"सजना तेरे बिना",                            e:"Without you, my love"},
+  {t:73,  h:"सजना तेरे बिना",                            e:"Without you…"},
+  {t:78,  h:"वे ए आ आ आ आ",                             e:"♪ ve a aa aa aa…"},
+  {t:90,  h:"ये दिन है प्यार हिरीए",                     e:"These days are soaked in longing, my love"},
+  {t:97,  h:"जो साथ हमने जी लिए",                       e:"The ones we lived through together"},
+  {t:104, h:"जाना नहीं मुह मोड़के",                      e:"Don't you dare turn your face away from me"},
+  {t:111, h:"आँखियो में पानी छोड़के",                    e:"Don't leave tears behind in my eyes"},
+  {t:118, h:"ये पानी आग लगावे",                         e:"These tears set my soul on fire"},
+  {t:124, h:"ये पानी आग लगावे",                         e:"This fire burns me from the inside"},
+  {t:131, h:"सजना तेरे बिना सजना तेरे बिना",            e:"Without you… without you, my love"},
+  {t:139, h:"सानु इक पल चैन ना आवे",                    e:"Not a single moment of peace comes to me"},
+  {t:145, h:"सानु इक पल चैन ना आवे",                    e:"Not a moment… not a breath…"},
+  {t:151, h:"सजना तेरे बिना",                            e:"Without you, my darling"},
+  {t:156, h:"सजना तेरे बिना",                            e:"Without you…"},
+  {t:175, h:"तेरा ख्याल हर घड़ी",                       e:"Every single moment — my mind is full of you"},
+  {t:182, h:"है आदतें मुझे तेरी",                       e:"Your habits have become a part of me"},
+  {t:189, h:"इक दिन तुझसे ना मिलूं",                    e:"If I go even one day without seeing you"},
+  {t:196, h:"पागल के जैसा मैं फिरूँ",                   e:"I wander around like a madman"},
+  {t:203, h:"कोई रुत ना मुझको भावे",                    e:"No season, no moment feels right to me"},
+  {t:210, h:"कोई रुत ना मुझको भावे",                    e:"Nothing feels right without you here"},
+  {t:217, h:"सजना तेरे बिना",                            e:"Without you, my love"},
+  {t:222, h:"सजना तेरे बिना",                            e:"Without you…"},
+  {t:228, h:"सानु इक पल चैन ना आवे",                    e:"Not a single moment of peace comes to me"},
+  {t:234, h:"सानु इक पल चैन ना आवे",                    e:"Not one moment…"},
+  {t:240, h:"सजना तेरे बिना",                            e:"Without you, my love"},
+  {t:245, h:"सजना तेरे बिना",                            e:"Without you, my darling"},
+  {t:250, h:"सजना तेरे बिना",                            e:"Without you… always without you 🌷"},
+];
+
+/* ══ ELEMENTS ══ */
+const audio       = document.getElementById('audio');
+const playBtn     = document.getElementById('playBtn');
+const pFill       = document.getElementById('pFill');
+const pTrack      = document.getElementById('pTrack');
+const tCur        = document.getElementById('tCur');
+const tDur        = document.getElementById('tDur');
+const lHindi      = document.getElementById('lHindi');
+const lEng        = document.getElementById('lEng');
+const stage       = document.getElementById('stage');
+const calBtn      = document.getElementById('calBtn');
+const calOverlay  = document.getElementById('calOverlay');
+const calNextEng  = document.getElementById('calNextEng');
+const calNextH    = document.getElementById('calNextHindi');
+const calProgTxt  = document.getElementById('calProgressText');
+const calTapBtn   = document.getElementById('calTapBtn');
+const calDoneBtn  = document.getElementById('calDoneBtn');
+const offsetBadge = document.getElementById('offsetBadge');
+
+/* ══ OFFSET — load saved, persists across sessions ══ */
+let offset = parseFloat(localStorage.getItem('sanu_offset') || '0');
+if (offset !== 0) {
+  offsetBadge.textContent = `synced ✓  (${offset > 0 ? '+' : ''}${offset.toFixed(1)}s)`;
+  offsetBadge.classList.add('show');
+}
+
+/* ══ LYRIC ENGINE ══ */
+let lyricIdx = -1;
+const fmt = s => (!s || isNaN(s)) ? '0:00' : Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
+
+function showLyric(idx) {
+  if (idx < 0 || idx >= LYRICS.length || idx === lyricIdx) return;
+  lyricIdx = idx;
+  const l = LYRICS[idx];
+  lHindi.style.opacity = '0';
+  setTimeout(() => { lHindi.textContent = l.h; lHindi.style.opacity = '1'; }, 180);
+  lEng.classList.remove('pop');
+  void lEng.offsetWidth;
+  lEng.textContent = l.e;
+  lEng.classList.add('pop');
+  stage.classList.remove('lit');
+  void stage.offsetWidth;
+  stage.classList.add('lit');
+}
+
+function updateLyrics(raw) {
+  const t = Math.max(0, raw - offset);
+  let ni = 0;
+  for (let i = 0; i < LYRICS.length; i++) {
+    if (t >= LYRICS[i].t) ni = i; else break;
+  }
+  showLyric(ni);
+}
+
+function updateProgress(raw) {
+  const dur = audio.duration;
+  if (!dur || isNaN(dur)) return;
+  pFill.style.width = (raw / dur * 100) + '%';
+  tCur.textContent  = fmt(raw);
+}
+
+audio.addEventListener('timeupdate', () => {
+  updateLyrics(audio.currentTime);
+  updateProgress(audio.currentTime);
+});
+audio.addEventListener('loadedmetadata', () => { tDur.textContent = fmt(audio.duration); });
+audio.addEventListener('ended', () => { playBtn.textContent = '▶ Play'; playBtn.classList.remove('playing'); });
+
+/* ══ PLAY / PAUSE ══ */
+playBtn.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play().catch(() => {});
+    playBtn.textContent = '⏸ Pause';
+    playBtn.classList.add('playing');
+    spawnHearts(playBtn);
+  } else {
+    audio.pause();
+    playBtn.textContent = '▶ Resume';
+    playBtn.classList.remove('playing');
+  }
+});
+
+pTrack.addEventListener('click', e => {
+  const dur = audio.duration;
+  if (!dur || isNaN(dur)) return;
+  const r = pTrack.getBoundingClientRect();
+  audio.currentTime = ((e.clientX - r.left) / r.width) * dur;
+});
+
+/* ══ TAP-TO-SYNC CALIBRATOR ══
+   How it works:
+   - Restart music from beginning
+   - Show each lyric line one by one
+   - User taps exactly when they HEAR that line in the music
+   - We collect: actual_time (audio.currentTime when tapped) vs expected_time (LYRICS[i].t)
+   - Compute MEDIAN of all (actual - expected) differences = your file's offset
+   - Apply offset to all timestamps. Saved to localStorage permanently.
+   - One-time process. Works for ANY version of the song.
+══ */
+let calMode = false;
+let calIdx  = 0;
+let calTaps = [];
+
+function startCalibration() {
+  calMode = true;
+  calIdx  = 1; // start from first real lyric line (skip line 0)
+  calTaps = [];
+  audio.currentTime = 0;
+  audio.play().catch(() => {});
+  playBtn.textContent = '⏸ Pause';
+  playBtn.classList.add('playing');
+  calBtn.classList.add('active');
+  calBtn.textContent = '● Live';
+  refreshCalDisplay();
+  calOverlay.classList.add('show');
+}
+
+function refreshCalDisplay() {
+  if (calIdx >= LYRICS.length) { finishCalibration(); return; }
+  const l = LYRICS[calIdx];
+  calNextEng.textContent = l.e;
+  calNextH.textContent   = l.h;
+  calProgTxt.textContent = `line ${calIdx} of ${LYRICS.length - 1}  ·  tap when you hear it`;
+}
+
+calTapBtn.addEventListener('click', () => {
+  if (!calMode) return;
+  calTaps.push({ expected: LYRICS[calIdx].t, actual: audio.currentTime });
+  // flash
+  calTapBtn.classList.add('cal-flash');
+  setTimeout(() => calTapBtn.classList.remove('cal-flash'), 120);
+  calIdx++;
+  refreshCalDisplay();
+});
+
+calDoneBtn.addEventListener('click', finishCalibration);
+
+function finishCalibration() {
+  calMode = false;
+  calOverlay.classList.remove('show');
+  calBtn.classList.remove('active');
+  calBtn.textContent = '⚙ Fix Sync';
+
+  if (calTaps.length < 2) return; // need at least 2 taps to be meaningful
+
+  // median of differences (robust against missed/late taps)
+  const diffs = calTaps.map(t => t.actual - t.expected).sort((a, b) => a - b);
+  const mid   = Math.floor(diffs.length / 2);
+  const med   = diffs.length % 2 === 0 ? (diffs[mid-1] + diffs[mid]) / 2 : diffs[mid];
+
+  offset = parseFloat(med.toFixed(2));
+  localStorage.setItem('sanu_offset', offset);
+
+  offsetBadge.textContent = `synced ✓  (${offset > 0 ? '+' : ''}${offset.toFixed(1)}s)`;
+  offsetBadge.classList.add('show');
+
+  // force lyric re-evaluation with new offset
+  lyricIdx = -1;
+}
+
+calBtn.addEventListener('click', () => {
+  if (calMode) finishCalibration();
+  else startCalibration();
+});
+
+/* ══ HEARTS ══ */
+function spawnHearts(el) {
+  const r = el.getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  const em = ['💕','❤️','🌷','💖','✨','🌸','💗'];
+  for (let i = 0; i < 11; i++) {
+    setTimeout(() => {
+      const h = document.createElement('div');
+      h.className = 'hburst';
+      h.textContent = em[Math.floor(Math.random() * em.length)];
+      h.style.cssText = `left:${cx+(Math.random()-.5)*90-10}px;top:${cy-20}px;animation-delay:${Math.random()*.3}s`;
+      document.body.appendChild(h);
+      h.addEventListener('animationend', () => h.remove());
+    }, i * 60);
+  }
+}
+
+/* ══ PETALS ══ */
+const pc = document.getElementById('petals-container');
+const pe = ['🌷','🌷','🌷','🌸','🌺','❤️','🌷','💕'];
+for (let i = 0; i < 22; i++) {
+  const p = document.createElement('div');
+  p.className = 'fpetal';
+  p.textContent = pe[i % pe.length];
+  p.style.left = (Math.random() * 100) + 'vw';
+  p.style.fontSize = (.45 + Math.random() * .8) + 'rem';
+  p.style.animationDuration = (7 + Math.random() * 10) + 's';
+  p.style.animationDelay = (Math.random() * 16) + 's';
+  pc.appendChild(p);
+}
+
+showLyric(0);
+</script>
+</body>
+</html>
